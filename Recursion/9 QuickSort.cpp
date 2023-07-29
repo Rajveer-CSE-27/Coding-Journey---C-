@@ -14,14 +14,16 @@ int partition(int arr[] , int left, int right) {
 			cnt++;
 		}
 	}
+	// IMP step of recursion
+	int pivotIndex = left + cnt;
 	
 	// place the pivot element at its correct position
-	swap(arr[cnt] , arr[left]);
+	swap(arr[pivotIndex] , arr[left]);
 	
 	// place all other elements accordingly
 	int i=0, j=right;
 	
-	while(i < cnt && j > cnt) {
+	while(i < pivotIndex && j > pivotIndex) {
 		while(arr[i] <= pivot) {
 			i++;
 		}
@@ -31,13 +33,13 @@ int partition(int arr[] , int left, int right) {
 		}
 		
 		// jaise hi galat element dikha swap kardo
-		if(i < cnt && j > cnt) {
+		if(i < pivotIndex && j > pivotIndex) {
 			swap(arr[i], arr[j]);
 			i++;
 			j--;
 		}
 	}
-	return cnt;	
+	return pivotIndex;	
 		
 }
 
