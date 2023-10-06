@@ -7,8 +7,8 @@ Approach : We will be using recursion because we need to find number of paths. S
            So number of paths till cell (i,j) = number of paths till (i-1,j) + till (i,j-1).
            F(i,j) = F(i-1,j) + F(i,j-1)
 
-Time Complexity = O(2^n) because for each index we will be exploring 2 paths therefore total paths = 2*2*2.....*2 = 2^n
-Space Complexity = O(n) : auxillary stack space.
+Time Complexity = O(2^(m+n)) because for each index we will be exploring 2 paths therefore total paths = 2*2*2.....*2 = 2^n
+Space Complexity = O(n+m) : auxillary stack space.
 **/
 
 #include <bits/stdc++.h>
