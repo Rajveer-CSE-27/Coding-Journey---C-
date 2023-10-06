@@ -11,7 +11,7 @@ Approach : We will apply memoization over the recursion solution to save the tim
            overlapping subproblems.
 
 Time Complexity = nearly O(n*4*3) = O(n) because there are N*4 states and for every state, we are running a for loop iterating three times
-Space Complexity = O(n) : auxillary stack space. Because he can perform only 1 activity per day.
+Space Complexity = O(n) : auxillary stack space. Because he can perform only 1 activity per day. + O(4*n) for dp matrix
 
 **/
 #include <bits/stdc++.h>
