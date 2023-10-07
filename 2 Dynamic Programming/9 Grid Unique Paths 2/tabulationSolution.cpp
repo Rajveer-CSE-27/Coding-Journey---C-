@@ -15,21 +15,6 @@ Space Complexity = O(m*n) dp space.
 #include <bits/stdc++.h>
 using namespace std;
 
-int uniquePaths(vector<vector<int>> maze, int x, int y, vector<vector<int>>& dp) {
-    if(dp[x][y] != -1) {
-        return dp[x][y];
-    }
-    
-    if(maze[x][y] == -1) {
-        return dp[x][y] = 0;
-    }
-    if(x == 0 or y == 0) {
-        return dp[x][y] = 1;
-    }
-    
-    return dp[x][y] = uniquePaths(maze,x-1,y,dp) + uniquePaths(maze,x,y-1,dp);
-}
-
 int main() {
     
     int m,n;
