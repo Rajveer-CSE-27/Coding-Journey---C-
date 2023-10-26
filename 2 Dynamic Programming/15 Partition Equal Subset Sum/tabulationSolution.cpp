@@ -12,25 +12,6 @@ Space Complexity = O(n*k).
 #include <bits/stdc++.h>
 using namespace std;
 
-bool solve(vector<int>& vc, int index, int k, vector<vector<int>>& dp) {
-    if(index == -1) {
-        return false;
-    }
-    if(k == 0) {
-        return dp[index][k] = true;
-    }
-    if(dp[index][k] != -1) {
-        return dp[index][k];
-    }
-    
-    bool not_pick = solve(vc, index-1, k, dp);
-    bool pick = false;
-    if(k >= vc[index]) {
-        pick = solve(vc, index - 1, k - vc[index], dp);
-    }
-    return dp[index][k] = not_pick or pick;
-}
-
 int main() {
     
     int n, sm = 0;
