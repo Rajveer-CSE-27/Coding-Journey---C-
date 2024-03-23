@@ -2,8 +2,6 @@
 using namespace std;
 #define ll long long
 
-// WATCH TILL VIDEO : 23
-
 // can prove anything by taking :: a = x*p + k1 and b = y*p + k2
 
 int aModp(int a, int p) {
