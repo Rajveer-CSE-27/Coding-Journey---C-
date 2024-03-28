@@ -1,7 +1,10 @@
+// this is 100% accurate for long long and int
+
 #include <bits/stdc++.h>
 using namespace std;
 using u64 = uint64_t;
 using u128 = __uint128_t;
+
 
 u64 binpower(u64 base, u64 e, u64 mod) {
     u64 result = 1;
