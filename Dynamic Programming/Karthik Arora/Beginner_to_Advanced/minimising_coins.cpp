@@ -16,6 +16,9 @@ Approach ::
             Not to handle the case where target sum(i - cj) is not possible.
         
         Hence we apply iterative DP here.
+
+Time Complexity :: O(x * n)
+Space Complexity :: O(x + n).
          
 **/
 
