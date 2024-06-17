@@ -27,6 +27,7 @@ public:
         for(int i=1; i<=m; i++) {
             if(fun(i,i) > 1 - 1e-5) { // becuase ek certain m ke baad answer humesha 1 aega becuase probability that a finishes first will always tend to 1 after some value of m. Because initial staring point is m for both. For proof and intuition see this video https://www.youtube.com/watch?v=XNLJS-uDIqU
 
+                // because as we increase i the probabilty or our answer increases. Hence if ans > 1 - 1e-5 then answer will later increase only and our result will always be 1 after that
                 return 1;
             }
             
