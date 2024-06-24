@@ -10,62 +10,6 @@ struct manacher {
     vector<int> p;
     // p[i] = maximum length pallindrome such that i will be the centre
     
-    void get_longest_pallindrome(string s) {
-        int n = s.length();
-        
-        int mxLen = -1, centre = -1;
-        
-        for(int i=0; i<n; i++) {
-            
-            if(i&1) {
-                // this location is present in original string
-                //p[i] here will always be even
-                int len = p[i]/2;
-                if(len > mxLen) {
-                    mxLen = len;
-                    centre = i;
-                }
-            } else {
-                // this location is not present in original string
-                //p[i] here will always be odd
-                int len = p[i]/2;
-                if(len > mxLen) {
-                    mxLen = len;
-                    centre = i;
-                }
-            }
-        }
-        
-        if(centre&1) {
-            // include the centre once
-            char temp = s[centre];
-            string res = "";
-            res += temp;
-            int j = 2;
-            
-            mxLen--;
-            while(mxLen--) {
-                char c = s[centre + j];
-                res += c;
-                res = c + res;
-                j += 2;
-            } 
-            
-            cout << res << '\n';
-        } else {
-            string res = "";
-            int j = 1;
-            
-            while(mxLen--) {
-                char c = s[centre + j];
-                res += c;
-                res = c + res;
-                j += 2;
-            }
-            cout << res << '\n';
-        }
-    }
-    
     void run_manacher(string s) {
         int n = s.length();
         p.resize(n, 1);
@@ -102,10 +46,7 @@ struct manacher {
         for(int x:p) {
             cout << x << " ";
         }
-        cout << '\n';
-        
-        get_longest_pallindrome(s);
-        
+        cout << '\n';        
     }
     
     void build_hash_string(string s) {
@@ -117,7 +58,16 @@ struct manacher {
         t += "#";
         run_manacher(t);
     }
-    
+    int getLongest(int centre, bool odd) {
+        int realPosition = 2*centre + 1 + (!odd);
+        return p[pos] - 1;
+    }
+    bool checkPallindrome(int l, int r) {
+        if((r - l + 1) <= getLongest((l+r)/2, l%2 == r%2) {
+            return 1;
+        }
+        return 0;
+    }
     
 }m; // that is object of manacher will be named as m
 
