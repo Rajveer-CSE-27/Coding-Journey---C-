@@ -4,6 +4,14 @@ using namespace std;
 #define ll long long
 const int mod = 1e9 + 7;
 
+
+/**
+https://www.youtube.com/watch?v=H6OCV7qcZoQ&list=PLb3g_Z8nEv1hB69JL9K7KfEyK8iQNj9nX&index=3
+
+https://www.spoj.com/problems/PR003004/
+
+**/
+
 ll dp[17][2];
 ll cntDp[17][2];
 
