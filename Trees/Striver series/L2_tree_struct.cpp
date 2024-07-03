@@ -5,6 +5,8 @@ using namespace std;
 
 /**
 https://www.youtube.com/watch?v=ctCpP0RFDFc&list=PLkjdNRgDmcc0Pom5erUBU4ZayeU9AyRRu&index=2
+
+This structure is true for only binary trees
 **/
 
 struct node {
