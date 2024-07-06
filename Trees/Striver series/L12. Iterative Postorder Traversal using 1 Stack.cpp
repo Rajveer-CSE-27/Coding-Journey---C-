@@ -29,6 +29,7 @@ struct node {
 void postorder(struct node *root) {
 	
 	// very tricky to understand. First go till extreme left then extreme right
+	// do not use this. Instead see L13 which prints all three travesals in one stack. That is simple
 	
 	stack<struct node*> st;
 	struct node *temp = root;
