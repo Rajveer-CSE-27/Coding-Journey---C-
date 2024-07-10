@@ -12,6 +12,8 @@ Space : O(h) stack space.
 
 See video for what is LCA
 
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/
+
 **/
 
 struct node {
