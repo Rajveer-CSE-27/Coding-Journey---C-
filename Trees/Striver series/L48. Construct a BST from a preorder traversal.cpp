@@ -27,7 +27,7 @@ Approach 3 ::
     -> Check for all the indices that you can put in left of current node. Here new limit will be value of current node.
     -> check for all the indeices that you can put right of current node. Here no change in limit, it will be equal to value of parent node.
     
-    -> Time :: O(n)
+    -> Time :: O(3*n) = O(n) in worst case we visit a node 3times.
     -> Space :: O(1)
     WATCH VIDEO FOR MORE EXPLAINATION.
         
