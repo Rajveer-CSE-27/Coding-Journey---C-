@@ -5,6 +5,8 @@ using namespace std;
 const int mod = 1e9 + 7;
 
 /**
+https://www.youtube.com/watch?v=mw2J6lvZZJ4&list=PLDjGkpToBsYCaRoQ-_S5MRxYMuKgHD62w&index=3
+https://codeforces.com/gym/304970
 
 Trees :: 
 	-> Form of graph
