@@ -11,7 +11,7 @@ class Phone { // There is a rule not necessary that class name start with upper 
 
 public: // from now everything is public.
     
-    Phone(string phone_name, string phone_model) { // this is the constructor that get automatically called when we create an object of the class.
+    Phone(string phone_name, string phone_model) { // this is constructor that gets automatically called when we create an object of the class.
         name = phone_name;
         model = phone_model;
         // inside the constructor we may or may not give values to all the attributes that are declared.
@@ -31,9 +31,9 @@ public: // from now everything is public.
 
 int main() {
     
-    // iphone is the object of Phone class which will use Phone class as its bluePrint.
     
-    Phone iphone("Apple iPhone", "14 pro max"); 
+    Phone iphone("Apple iPhone", "14 pro max");
+    // iphone is the object of Phone class which will use Phone class as its bluePrint. 
     Phone onePlus = Phone("onePlus", "Nord CE3");
     // above both are the ways to create an object of the class. The above objects are created in c++ stack. And they are deleted once we finish the current function (here main function).
     
