@@ -5,7 +5,8 @@ using namespace std;
 const int mod = 1e9 + 7; 
 
 /**
-
+https://www.youtube.com/watch?v=FAfSArGC8KY&list=PLb3g_Z8nEv1j_BC-fmZWHFe6jmU_zv-8s&index=7
+https://cses.fi/problemset/task/1687/
 
 Approach 1 :: 
     O(n*q) approach. That is each query takes O(n) time.
