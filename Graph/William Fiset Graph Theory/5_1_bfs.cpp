@@ -7,19 +7,11 @@ using namespace std;
 /**
 https://www.youtube.com/watch?v=oDqjPvD54Ss&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=5
 
-BFS ::
-	
-	Time complexity :: O(V + E)
-	Space complexity :: O(V)
-
-Applications :: 
-	Traversal
-	Shortest path for unweighted graph
+Shortest path in unweighted graph ::
 	
 Approach :: 
-	Explores the nodes in layers/level.
-	First all the nodes of current level are iterated then only we go to next layer of neighbours.
-	Use queue for traversal.
+	Do BFS from source node. Also keep on storing previous node/ parent for each visited node.
+	If you reach the destination node construct the path using information of parent nodes, in this BFS traversal.
 	
 **/
 
@@ -30,16 +22,18 @@ void bfs(int node) {
 	// bfs starting from node 1
 	queue<int> q;
 	q.push(node);
+	visited[node] = true;
 	
 	while(!q.empty()) {
 		int m = q.size();
 		while(m--) {
 			int tempNode = q.front();
 			q.pop();
-			visited[tempNode] = true;
+		
 			cout << tempNode << " ";
 			for(int adj:graph[node]) {
 				if(visited[adj] == false) {
+					visited[adj] = true;
 					q.push(adj);
 				}
 			}
