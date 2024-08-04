@@ -8,6 +8,13 @@ using namespace std;
 DFS ::
 	Time :: O(V + E)
 	Space :: O(V)
+
+Applications ::
+	Traversal
+ 	Connected components
+  	Connectivity
+   	Bridges/Articulation points
+    	Etc.....
 	
 Approach :: 
 	Start dfs at a node
