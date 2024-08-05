@@ -18,8 +18,7 @@ Centre of the tree ::
 	
 	Hence go on removing the leaf nodes till tree is empty and the last set of nodes that you remove will be tree centre(s).
 
- Another approach is to take the centre nodes on the longest path possible in the tree. The nodes lying at centre will always be centroids.
- This would use diameter of the tree property.
+NOTE :: Do not confuse centre of the tree with centroid. Vo thoda alag hai
 
 Time :: O(n)
 Space :: O(n)
