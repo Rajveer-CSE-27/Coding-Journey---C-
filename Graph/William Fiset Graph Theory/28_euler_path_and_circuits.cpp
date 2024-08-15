@@ -14,7 +14,10 @@ Eulerian circuit :: Eulerian circuit (or Eulerian cycle) is an Eulerian path whi
 
 NOTE :: for an eulerian path or circuit to exist, the graph must be connected.
 		If not connected, there does not exist any eulerian path or circuit.
+		All vertices with nonzero degree belong to a single component
 		
+	HANDLE THIS VERY CAREFULLY using connected component algo. to check 
+	
 		Edge case :: if a graph has multiple components but all the edges lies in a single component and rest of the components are just vertices with no edges,
 					 then there can exist a valid eulerian path or circuit.
 		
@@ -161,8 +164,7 @@ int main() {
 	for(int i=0; i<m; i++) {
 		int n1,n2;
 		cin >> n1 >> n2;
-		graph[n1].push_back(n2); // we are taking directed graph. 
-		
+		graph[n1].push_back(n2); // we are taking directed graph.
 	}
 	
 	// computing in and out degree for each vertex
