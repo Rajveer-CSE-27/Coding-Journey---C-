@@ -161,7 +161,7 @@ int main() {
 	for(int i=0; i<m; i++) {
 		int n1,n2;
 		cin >> n1 >> n2;
-		graph[n1].push_back(n2); // we are taking directed graph. This code will also work with undirected graph.
+		graph[n1].push_back(n2); // we are taking directed graph. This code will also work with undirected graph. Just keep the track of parents
 		
 	}
 	
