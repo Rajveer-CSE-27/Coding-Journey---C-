@@ -107,6 +107,7 @@ void solve() {
             cout << i << " " << hk.l[i] << "\n";
         }
     }
+    // this is for unweighted bipartite graph only
 }
 
 
