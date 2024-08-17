@@ -43,14 +43,14 @@ Time complexity ::
     With BFS :: time complexity :: O(V * E * E).
 
 Will learn much faster ways later.
-	
+    
 **/
 
 /*
     Algorithms: Ford Fulkerson + (DFS / BFS)
     Description: Ford Fulkerson Algorihtm implemented using DFS. Also you can use
-    BFS, which will change the complexity. Both implemented so just comment line 69
-    and uncomment line 70 to change algorihtms. Ford Fulkerson is used to find Max 
+    BFS, which will change the complexity. Both implemented so just comment line 135
+    and uncomment line 136 to change algorihtms. Ford Fulkerson is used to find Max 
     Flow or Min Cut. 
     For the sake of simplicity I used 2D array to represent the graph.
 */
@@ -59,6 +59,26 @@ Will learn much faster ways later.
 
 bool BFS(int ways[maxN][maxN], int * parent, bool * visited, int n, int s, int t){
 
+    /**
+    This is called edmond-karp algorithm.
+    It uses BFS for ford-fulkerson method to find maximum network flow.
+    
+    A depth first search will sometimes find long windy paths from the source to the sink. As it depends on the capacity of each edge in the path.
+    This is usually undesirable because the longer the the path, the smaller the bottleneck value, which results in a longer runtime.
+    
+    Using a BFS to find augmenting paths ensures that the shortest path from s -> t
+    is found every iteration.
+    Using the shortest path (in terms of the number of edges) as an augmenting path is a great approach to avoid the DFS worse case and reduce the length of
+    augmenting paths.
+    
+    The method is to do a Breadth First Search (BFS) starting at the source and ending at the sink.
+    While exploring the flow graph, remember that we can only reach a node if the capacity of the edge to get there is greater than 0.
+        
+    Rest all is same as DFS.
+    
+    Time complexity :: O(V*E*E) which do not depend on values of capacity of edges.
+    **/
+    
     queue<int> q;
 
     parent[s] = -1;
@@ -83,7 +103,8 @@ bool BFS(int ways[maxN][maxN], int * parent, bool * visited, int n, int s, int t
 
 bool DFS(int rGraph[maxN][maxN], int * parent, bool * visited, int n, int x, int t){
 
-    // cout << x << " ";
+    // time complexity of DFS in Ford-Fulkerson is O(EF) explained above.
+
     if(x == t) return true;
     visited[x] = true;
 
