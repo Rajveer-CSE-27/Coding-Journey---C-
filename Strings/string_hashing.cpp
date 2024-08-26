@@ -48,9 +48,11 @@ Fast hash calculation of substrings of given string ::
             
         
         hash(s[i....j]) * (p^i) = (hash(s[0....j]) - hash(s[0...i-1])) modm
-        
+
+    See problem 2 in your strings Problem folder
     Hence we need to find the modular multiplicative inverse of  p^i and then perform multiplication in RHS to get answer.
     Read article for optimized way to avoid this multiplication.
+    
     
 
 Improve no-collision probability ::
