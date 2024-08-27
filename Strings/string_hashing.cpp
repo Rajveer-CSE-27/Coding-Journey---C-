@@ -66,6 +66,8 @@ Improve no-collision probability ::
         
         Comparing 2 strings will be now comparing their pairs of hash values. If both equal then 2 strings are equal.
         And also this resuces P(collision) a lot lot lot.
+
+        See Problem 3 in Problem section
 **/
 
 
