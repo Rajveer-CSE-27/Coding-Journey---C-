@@ -50,7 +50,7 @@ int main() {
         set<ll> hash_set;
         
         for(int i=0; i<=n - len; i++) {
-            ll h = (h[i + len] + mod - h[i]) % mod;
+            ll h = (hash[i + len] + mod - hash[i]) % mod;
             h = (h * power[n - i - 1])%mod;
             
             // h is the hash value of subtring starting from i and having length = len.
