@@ -96,7 +96,7 @@ vector<int> suffix_array_construction(string s) {
     // time :: O(nlogn)
     // space :: O(n)
     
-    s += "$";
+    s += "$"; // this character must be less than any of the character in string
     vector<int> sorted_shifts = sort_cyclic_shifts(s);
     
     // if you want to know smallest cyclic shift then 
