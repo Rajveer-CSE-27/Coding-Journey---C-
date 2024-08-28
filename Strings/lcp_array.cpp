@@ -10,6 +10,8 @@ Longest Common Prefix array (LCP) array ::
         
         The LCP array is an array in which every index tracks how many characters two sorted
         adjacent suffixes have in common.
+        Hence lcp[i] = number of common characters in prefix between both the strings.
+
         
         Example :: 
             string :: "ABABBAB"
