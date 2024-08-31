@@ -121,7 +121,7 @@ void rangeUpdate(int index, int low, int high, int l, int r, int val) {
         if(low != high) {
             // then propogate this update to immediate children
             lazy[2*index + 1] += lazy[index];
-            lazy[2*index + 1] += lazy[index];
+            lazy[2*index + 2] += lazy[index];
         }
         
         lazy[index] = 0;
@@ -173,7 +173,7 @@ int querySumLazy(int index, int low, int high, int l, int r) {
         if(low != high) {
             // then propogate this update to immediate children
             lazy[2*index + 1] += lazy[index];
-            lazy[2*index + 1] += lazy[index];
+            lazy[2*index + 2] += lazy[index];
         } 
         
         lazy[index] = 0;
@@ -217,22 +217,24 @@ signed main() {
     
     
     while(q--) {
-        int type, x, u;
-        cin >> type >> x >> u;
+        int type;
+        cin >> type;
         
         if(type == 1) {
             
-            // val me difference daalo u - a[index]
-            int diff = u - a[x-1];
-            a[x-1] = u;
-            rangeUpdate(0, 0, n-1, x-1, x-1, diff);
+            int l,r,u;
+            cin >> l >> r >> u;
+            rangeUpdate(0, 0, n-1, l-1, r-1, u);
             
         } else {
-            int ans = querySumLazy(0,0,n-1, x-1, u-1);
+            
+            int k;
+            cin >> k;
+            
+            int ans = querySumLazy(0,0,n-1, k-1, k-1);
             cout << ans << '\n';
         }
     }
     
     return 0;
 }
-
