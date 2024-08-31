@@ -41,6 +41,8 @@ For update queries ::
     Ans so on...
     
     Hence time complexity of update is : O(logn)
+
+LAZY doest not work for all kind of operations like max, min, etc
   
   
 https://cses.fi/problemset/task/1648  
