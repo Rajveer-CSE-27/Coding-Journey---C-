@@ -217,23 +217,7 @@ signed main() {
     
     
     while(q--) {
-        int type;
-        cin >> type;
-        
-        if(type == 1) {
-            
-            int l,r,u;
-            cin >> l >> r >> u;
-            rangeUpdate(0, 0, n-1, l-1, r-1, u);
-            
-        } else {
-            
-            int k;
-            cin >> k;
-            
-            int ans = querySumLazy(0,0,n-1, k-1, k-1);
-            cout << ans << '\n';
-        }
+        // queries
     }
     
     return 0;
