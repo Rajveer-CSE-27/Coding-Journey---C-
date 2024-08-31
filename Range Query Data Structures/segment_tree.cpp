@@ -51,6 +51,7 @@ https://cses.fi/problemset/task/1648
 int a[2 * 100005], segTree[8 * 100005], lazy[8 * 100005];
 
 void build(int index, int low, int high) {
+
     
     // index will represent the index of segTree node
     // low, high represents the range [l,r] that this node gives result for i.e operation applied on array elements from l to r
@@ -206,6 +207,7 @@ signed main() {
     }
     
     build(0, 0, n-1);
+    // O(n) time to build
     
     // lazy[i] represents the amount by which we need to increase segTree[i] value.
     // no matter what the type of operation is. Lazy[i] will be same.
