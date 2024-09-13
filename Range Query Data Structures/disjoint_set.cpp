@@ -155,15 +155,15 @@ public:
             // note that this will not change the height_u.
             
             // erase representative_v from set of representative nodes
-            representative_To_Set_Info.erase(reprsentative_v);
+            representative_To_Set_Info.erase(representative_v);
         } else {
             
-            parent[representative_u] = reprsentative_v;
+            parent[representative_u] = representative_v;
             representative_To_Set_Info[representative_v].first += representative_To_Set_Info[representative_u].first;
             
             // only when height_u == height_v then only height_v will increase by 1.
             if(height_u == height_v) {
-                representative_To_Set_Info[reprsentative_v].second++;
+                representative_To_Set_Info[representative_v].second++;
             }
             
             representative_To_Set_Info.erase(representative_u);
