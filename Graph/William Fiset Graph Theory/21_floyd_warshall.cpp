@@ -61,6 +61,7 @@ signed main(){
 	
 	vector<vector<int>> dp(n+1, vector<int>(n+1, INT_MAX));
 	vector<vector<int>> Next(n+1, vector<int>(n+1, -1));
+	// here we considered DIRECTED. add reversed edges for making this algo undirected
 	
 	for(int i=0; i<m; i++) {
 		int n1,n2,w;
