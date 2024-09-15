@@ -32,25 +32,25 @@ void dijkstra(int source, int n) {
 
 	
 	vector<int> dist(n, INT_MAX); // shortest distance of current node from source node
+	dist[source] = 0;
+	
 	
 	while(!pq.empty()) {
-		pair<int,pair<int,int>> pr = pq.top();
+		pair<int, pair<int,int>> pr = pq.top();
 		pq.pop();
+
+		int node = pr.second.first;
+		parent[node] = pr.second.second;
 		
-		int curr_dist = pr.first, node = pr.second.first, par = pr.second.second;
-		int total_distance_from_source = (par == -1) ? 0 : dist[par];
-		
-		if(dist[node] < curr_dist + total_distance_from_source) { // we already have a better smaller distance for current node
-			continue;
+		for(pair<int,int> adj: graph[node]) {
+			int next = adj.first, d = adj.second;
+			d += dist[node];
+
+			if(dist[next] > d) {
+				dist[next] = d;
+				pq.push({d,{next, node}};
+			}
 		}
-		
-		dist[node] = curr_dist + total_distance_from_source;
-		parent[node] = par;
-		
-		for(pair<int,int> adj:graph[node]) {
-			pq.push({adj.second, {adj.first, node}});
-		}
-		 
 	}
 	
 	cout << "Source node : " << source << '\n';
