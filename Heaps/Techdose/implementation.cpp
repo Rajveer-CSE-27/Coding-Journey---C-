@@ -6,6 +6,7 @@ using namespace std;
 /**
 https://www.youtube.com/watch?v=cuL8gXCSA58&list=PLEJXowNB4kPyP2PdMhOUlTY6GrRIITx28&index=4
 https://www.youtube.com/watch?v=VkKmmwzfIG4&list=PLEJXowNB4kPyP2PdMhOUlTY6GrRIITx28&index=6
+https://www.naukri.com/code360/problems/build-min-heap_1171167?topList=love-babbar-dsa-sheet-problems&utm_source=website&utm_medium=affiliate&utm_campaign=450dsatracker&leftPanelTabValue=SUBMISSION
 
 Heaps :: 
      Binary heaps are implemented with concepts of complete binary tree {perfect till last level and last level starts filling from right to left}.
