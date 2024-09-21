@@ -48,7 +48,7 @@ void dijkstra(int source, int n) {
 
 			if(dist[next] > d) {
 				dist[next] = d;
-				pq.push({d,{next, node}};
+				pq.push({d,{next, node}});
 			}
 		}
 	}
