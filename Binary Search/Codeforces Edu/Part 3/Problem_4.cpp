@@ -1,124 +1,168 @@
+
+// || जय जय जय बजरंग बली ||
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
-/**
-Problem link :: https://codeforces.com/edu/course/2/lesson/6/3/practice/contest/285083/problem/D
- 
-Approach :: 
-    Looks like Min(Max()) problem using Binary Search.
-    Let there be a variable x which tells the maximum edge value in a valid path from 1 to n.
-    That is for a given x there exist a valid path from 1 to n with atmost d edges and value of each edge will be <= x.
-    
-    So the variable x will form a bad-good sequence :: 00000000011111111111.....
-    And we need to find the minimal x which is good. Hence let us apply binary search.
-        
-**/
 
-vector<vector<pair<int,int>>> graph;
 int n,m,d;
-bool visited[100010];
+vector<vector<pair<int,int>>> graph;
 
-bool is_good(int mxLimit) {
-    vector<bool> tempVisited(n+1, false);
-    queue<int> q;
-    int level = 0, sz = 1;
-    q.push(1);
-    
-    bool flag = false;
-    while(!q.empty()) {
-        sz--;
-        int node = q.front();
-        q.pop();
-        
-        if(node == n) {
-            flag = true;
-            break;
-        }
-        
-        for(int i=0; i<graph[node].size(); i++) {
-            int nextNode = graph[node][i].first;
-            int w = graph[node][i].second;
-            
-            if(tempVisited[nextNode] == false and w <= mxLimit) {
-                q.push(nextNode);
-                tempVisited[nextNode] = true;
-            }
-        }
-        if(sz == 0) {//we processed all nodes at one level
-            sz = q.size();
-            level++;
-        }
-    }
-    
-    if(flag == false) {
-        return false;
-    }
-    
-    if(level <= d) {
-        return true;
-    }
-    return false;
+bool preCheck() {
+	
+	queue<int> q;
+	q.push(1);
+	
+	int edgeCnt = 0;
+	
+	vector<bool> vis(n+1, false);
+	vis[1] = true;
+	
+	while(!q.empty()) {
+		
+		edgeCnt++;
+		int s = q.size();
+		while(s--) {
+			
+			int node = q.front();
+			q.pop();
+			
+			for(pair<int,int> adj:graph[node]) {
+				int next = adj.first;
+				if(vis[next] == false) {
+					q.push(next);
+					vis[next] = true;
+					if(next == n) {
+						return (edgeCnt <= d);
+					}
+				}
+			}
+		}
+	}
+	
+	return false;
 }
 
-vector<int> path;
-
-bool dfs(int node, int level, int mxLimit) {
-    if(level > d) {
-        return false;
-    }
-    if(node == n) {
-        return true;
-    }
-    
-    for(int i=0; i<graph[node].size(); i++) {
-        int nextNode = graph[node][i].first;
-        int w = graph[node][i].second;
-        
-        if(visited[nextNode] == false and w <= mxLimit) {
-            if(dfs(nextNode, level+1, mxLimit) == true) {
-                path.push_back(nextNode);
-                return true;
-            } else if(node == 1) { // we explored one full branch of dfs and didnt found a solution
-                path.clear();
-                memset(visited, 0, sizeof(visited));
-            }
-        }
-    }
-    return false;
+bool check(int x) {
+	
+	// minium number of edges to reach from 1 to n such that no edge length has value > x
+	
+	queue<int> q;
+	q.push(1);
+	
+	int edgeCnt = 0;
+	
+	vector<bool> vis(n+1, false);
+	vis[1] = true;
+	
+	
+	while(!q.empty()) {
+		
+		edgeCnt++;
+		int s = q.size();
+		while(s--) {
+			int node = q.front();
+			q.pop();
+			
+			for(pair<int,int> adj:graph[node]) {
+				int next = adj.first;
+				int w = adj.second;
+				
+				if(vis[next] == false and w <= x) {
+					vis[next] = true;
+					q.push(next);
+					
+					if(next == n) {
+						return (edgeCnt <= d);
+					}
+				}
+			}
+		}
+	}
+	
+	return false;
 }
+
 
 signed main() {
-    cin >> n >> m >> d;
-    
-    graph.resize(n+1, vector<pair<int,int>>());
-    for(int i=0; i<m; i++) {
-        int n1, n2, w;
-        cin >> n1 >> n2 >> w;
-        graph[n1].push_back({n2,w});
-    }
-    
-    int low = 0, high = 1e9 + 100;
-    
-    while(low + 1 < high) {
-        int mid = (low + high)/2;
-        if(is_good(mid) == true) {
-            high = mid;
-        } else {
-            low = mid;
-        }
-    }
-    
-    if(high == 1e9 + 100) {
-        cout << -1;
-    } else {
-        memset(visited, 0, sizeof(visited));
-        dfs(1, 0, high);
-        cout << path.size() << '\n';
-        
-        cout << 1 << " ";
-        for(int i=path.size()-1; i>=0; i--) {
-            cout << path[i] << " ";
-        }
-    }
-    
+
+	cin >> n >> m >> d;
+	
+	graph.resize(n+1);
+	
+	for(int i=0; i<m; i++) {
+		int n1,n2,w;
+		cin >> n1 >> n2 >> w;
+		graph[n1].push_back({n2,w});
+	}
+	
+	// checking whether path exists
+	if(preCheck() == false) {
+		cout << -1;
+		return 0;
+	}
+	
+	int low = -1; // obvious bad value
+	int high = 1e9; // obious good value
+	
+	int ans = high;
+	while(low <= high) {
+		int mid = (low + high)/2;
+		
+		if(check(mid) == true) {
+			ans = mid;
+			high = mid - 1;
+		} else {
+			low = mid + 1;
+		}
+	}
+	
+	
+	queue<int> q;
+	vector<int> parent(n+1, -1);
+	
+	q.push(1);
+	
+	bool flag = true;
+	
+	while(!q.empty() and flag == true) {
+		int s = q.size();
+		while(s > 0 and flag == true) {
+			int node = q.front();
+			q.pop();
+			
+			for(pair<int,int> adj:graph[node]) {
+				int next = adj.first;
+				int w = adj.second;
+				
+				if(parent[next] == -1 and w <= ans) {
+					parent[next] = node;
+					q.push(next);
+					
+					if(next == n) {
+						flag = false;
+						break;
+					}
+				}
+			}
+			s--;
+		}
+	}
+	
+	vector<int> path;
+	path.push_back(n);
+	int next = parent[n];
+	
+	while(next != -1) {
+		path.push_back(next);
+		next = parent[next];
+	}
+	
+	reverse(path.begin(), path.end());
+	
+	cout << path.size() - 1 << '\n';
+	for(auto it:path) {
+		cout << it << " ";
+	}
+	
+	return 0;
 }
