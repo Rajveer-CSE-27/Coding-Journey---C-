@@ -43,7 +43,7 @@ void fun(int j, int nextRow, bool bombUsed, int cnt, int coins) {
 				if(bombUsed == false) {
 					// using bomb
 					
-					fun(j1, nextRow - 1, true, 5, coins);
+					fun(j1, nextRow - 1, true, 4, coins);
 				}
 				
 				if(cnt > 0) {
