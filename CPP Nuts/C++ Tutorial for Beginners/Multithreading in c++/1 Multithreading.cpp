@@ -17,6 +17,8 @@ https://www.youtube.com/watch?v=TPVH_coGAQs&list=PLk6CEY9XxSIAeK-EAh3hB4fgNvYkYm
    Ye sab threads independently work karte hai.
    
 2. In C++ threads will work for versions >= C++11
+
+Hence to compile any cpp file having threads use : g++ -std=c++11 -pthread
    
 -> WAYS TO CREATE THREADS IN C++11
 
