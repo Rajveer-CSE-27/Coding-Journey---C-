@@ -10,6 +10,7 @@ https://www.youtube.com/watch?v=r-PDHNWYdes&list=PLk6CEY9XxSIAeK-EAh3hB4fgNvYkYm
 std::try_lock()
 
 Earlier we studied mutex try_lock i.e m.try_lock();
+Vo sirf single mutex ke liye kaam aata hai
 
 0. std::try_lock() tries to lock all the mutex/lockable things passed in it one by one in given order.
     SYNTAX :: std::try_lock(m1,m2,m3,.....mn);
