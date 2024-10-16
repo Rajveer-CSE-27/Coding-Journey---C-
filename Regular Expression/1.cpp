@@ -35,7 +35,7 @@ int main() {
   string s = "The ape was at apex"; // this is the string on which we will be performing things.
   regex rgx("(ape[^ ]?)"); // this is the pattern. Humesha "()" ke andar hi daalna
   
-  // () is necessary in c++
+  // () jab tak possible ho () naa hi use karo to better rahgea. Isse time complexity badhegi
   // ape[^ ] : we want all strings that start with ape and then any character except a space.
   // [^ ] this means not a space
   // ? That is after ape if there is nothing then ape would also be considered as a match
