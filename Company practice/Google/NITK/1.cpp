@@ -1,6 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/**
+Maximum gain substring
+You are given a string str consisting of lowercase English letters and
+an array values of size 26 where value/i] denotes the value of ith
+letter of English alphabet.
+Task
+You have to extract the substring such that the profit is maximum.
+Profit of string is calculated as the product of the sum of values of
+letters present in string and the index value of smallest character (in
+English alphabets) present in the string.
+Note: Index value of letters from a to z is 1 to 26 respectively.
+**/
+
 long long fun(string s, vector<int> vc) {
   
   map<int, vector<int>> mp;
