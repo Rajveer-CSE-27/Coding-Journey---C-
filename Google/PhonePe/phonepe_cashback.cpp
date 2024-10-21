@@ -50,7 +50,7 @@ int main() {
   }
   
   
-  int ans = INT_MAX;
+  int ans = INT_MIN;
   
   for(int i=0; i<n; i++) {
     
@@ -64,21 +64,24 @@ int main() {
         right = suff[i+1];
       }
       
-      int temp = -vc[i];
-      temp += left + right;
-      
-      ans = min(ans, temp); // as we need to get maximum phonepe profit hence minimum subarray sm
+      int temp = left + right;
+      ans = max(ans, temp); // as we need to get maximum phonepe profit hence minimum subarray sm
+    } else {
+      int left = 0, right = 0;
+      if(i-1 >= 0) {
+        left = pref[i-1];
+      } 
+      if(i+1 < n) {
+        right = suff[i+1];
+      }
+
+      int temp = vc[i] + left + right;
+      ans = max(ans, temp);
     }
     
   }
   
   
-  if(ans == INT_MAX) {
-    // all elements are positive in vc  
-    for(int i=0; i<n; i++) {
-      ans += vc[i];
-    }
-  }
   
   cout << ans;
   
