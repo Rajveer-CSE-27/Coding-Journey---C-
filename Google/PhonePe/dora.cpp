@@ -8,7 +8,7 @@ void dijkstra(int& n, vector<vector<int>>& v1, vector<vector<int>>& v2, int& s, 
   
   vector<vector<int>> dp(n, vector<int>(2, INT_MAX));
   dp[s][0] = 0;
-  dp[s][1] = 0;
+  //dp[s][1] = 0;
   
   priority_queue<pair<int, pair<int,int>>, vector<pair<int,pair<int,int>>>, greater<pair<int,pair<int,int>>>> pq;
   
@@ -36,7 +36,7 @@ void dijkstra(int& n, vector<vector<int>>& v1, vector<vector<int>>& v2, int& s, 
       if(switched == 1) {
         
         
-        if(node != s and v2[node][next] != -1) { // we can go from node to next
+        if(v2[node][next] != -1) { // we can go from node to next
           int temp = v2[node][next] + dis;
           
           if(dp[next][switched] > temp) {
