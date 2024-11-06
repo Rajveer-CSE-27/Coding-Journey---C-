@@ -2,27 +2,17 @@ class Solution {
 public:
 
 
-    int bfs(int node, vector<vector<pair<int,int>>>& tree, int s, int d, int par) {
-
-        queue<vector<int>> q;
-        q.push({node, 0, par});
-
+    int dfs(int node, vector<vector<pair<int,int>>>& tree, int s, int d, int par) {
 
         int cnt = 0;
+        if(d%s == 0) {
+            cnt++;
+        }
 
-        while(!q.empty()) {
-            vector<int> vc = q.front();
-            q.pop();
+        for(pair<int,int> adj:tree[node]) {
+            if(adj.first != par) {
 
-            if((vc[1] + d)%s == 0) {
-                cnt++;
-            }
-
-            for(pair<int,int> adj:tree[vc[0]]) {
-
-                if(adj.first != vc[2]) {
-                    q.push({adj.first, vc[1] + adj.second, vc[0]});
-                }
+                cnt += dfs(adj.first, tree, s, d + adj.second, node);
 
             }
         }
@@ -49,7 +39,7 @@ public:
             vector<int> vc;
             for(pair<int,int> adj:tree[i]) {
 
-                int v = bfs(adj.first, tree, signalSpeed, adj.second, i);
+                int v = dfs(adj.first, tree, signalSpeed, adj.second, i);
                 vc.push_back(v);
 
             }
