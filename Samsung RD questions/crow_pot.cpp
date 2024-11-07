@@ -36,7 +36,7 @@ void solve() {
       for(int l=i+1; l<=n; l++) {
         // let lth pot had been filled on j-1 th step
         
-        dp[i][j] = min(dp[i][j], dp[l][j-1]) + pots[i]*(l-i);
+        dp[i][j] = min(dp[i][j], dp[l][j-1] + pots[i]*(l-i));
         
       }
     }
