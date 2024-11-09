@@ -85,7 +85,7 @@ int main() {
       if(i != j) { // because 2 distinct
         
         for(int l=0; l<=s.length(); l++) {
-          for(int m=i; m<=s.length(); m++) {
+          for(int m=l; m<=s.length(); m++) {
             
             string temp = s;
             temp.insert(temp.begin() + l, i);
