@@ -30,7 +30,7 @@ int main() {
   }
   
   
-  vector<int> vc1, vc2;
+  vector<int> vc1;
   
   for(auto it:mp) {
     int key = it.first;
@@ -44,22 +44,18 @@ int main() {
     int v = abs(val);
     v /= 2;
     while(v--) {
-      if(val > 0) {
-        vc1.push_back(key);
-      } else {
-        vc2.push_back(key);
-      }
+      vc1.push_back(key);
     }
     
   }
   
   sort(vc1.begin(), vc1.end());
-  sort(vc2.rbegin(), vc2.rend());
   
   int ans = 0;
+  int m = vc1.size()/2;
   
-  for(int i=0; i<vc1.size(); i++) {
-    ans += min(vc1[i], vc2[i]);
+  for(int i=0; i<m; i++) {
+    ans += vc1[i];
   }
     
     
