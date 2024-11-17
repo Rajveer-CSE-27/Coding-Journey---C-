@@ -35,17 +35,19 @@ class ObservableInterface {
   
 public:
     
-  virtual void add(ObserverInterface* obj) {};
+  virtual void add(ObserverInterface* obj) = 0;
   // adds the observer to the list of observers
   
-  virtual void remove(ObserverInterface* obj) {};
+  virtual void remove(ObserverInterface* obj) = 0;
   // removes the observer from the list of observers
   
-  virtual void notifyObservers() {};
+  virtual void notifyObservers() = 0;
   // notifies all observers when there is change in the system
   
-  virtual void setStock(int t) {};
+  virtual void setStock(int t) = 0;
   // modify the stock of Observable item.
+  
+  virtual string getName() = 0;
     
 };
 
@@ -54,10 +56,10 @@ class EmailObserverClass : public ObserverInterface {
 public:
 
   string email;
-  ObservableInterface obj; // V.V.V important step to declare observableInterface object here.
+  ObservableInterface* obj; // V.V.V important step to declare observableInterface object here.
   // so that constructor se obj leke isme assign kar denge.
   
-  EmailObserverClass(string email, ObservableInterface obj) {
+  EmailObserverClass(string email, ObservableInterface* obj) {
     this->email = email;
     this->obj = obj;
   }  
@@ -70,6 +72,9 @@ public:
     
     // update is called when notifyObservers() called in observable class.
     
+    cout << obj->getName() << '\n';
+    // because multiple Observable classes ho sakti hai. To pata chalna chahiye konse observable ka observer update ho raha hai
+    
     sendMail(email, "Product is back in stock");
   }
   
@@ -81,11 +86,11 @@ class MobileObserverClass : public ObserverInterface {
 public:
 
   string number;
-  ObservableInterface obj; // V.V.V important step to declare observableInterface object here.
+  ObservableInterface* obj; // V.V.V important step to declare observableInterface object here.
   // so that constructor se obj leke isme assign kar denge.
   
   
-  MobileObserverClass(string number, ObservableInterface obj) {
+  MobileObserverClass(string number, ObservableInterface* obj) {
     this->number = number;
     this->obj = obj;
   }  
@@ -97,6 +102,8 @@ public:
   void update() {
     
     // update is called when notifyObservers() called in observable class.
+    
+    cout << obj->getName() << '\n';
     sendMessage(number, "Product is back in stock");
   }
   
@@ -111,11 +118,11 @@ public:
   set<ObserverInterface*> observerList;
   int currentStock = 0;
   
-  void add(ObserverInterface *obj) {
+  void add(ObserverInterface* obj) {
     observerList.insert(obj);
   }
   
-  void remove(ObserverInterface *obj) {
+  void remove(ObserverInterface* obj) {
     
     observerList.erase(obj);
     
@@ -145,6 +152,11 @@ public:
     return currentStock;
   }
   
+  string getName() {
+    string s = "Iphone 16";
+    return s;
+  }
+  
 };
 
 // we can add Observable class for other items also if we want
@@ -153,19 +165,19 @@ public:
 
 int main() {
   
-  IphoneObservableClass iphoneStock;
+  IphoneObservableClass iphoneStock; // iska pointer nhi banega cause IphoneObservableClass is not abstract i.e interface
   
-  ObserverInterface *obj;
-  
-  EmailObserverClass observer1("abc@gmail.com", iphoneStock);
+  ObserverInterface* obj; // iska pointer banega cause ObserverInterface is abstract
+   
+  EmailObserverClass observer1("abc@gmail.com", &iphoneStock);
   obj = &observer1;
   iphoneStock.add(obj);
   
-  EmailObserverClass observer2("pqr@gmail.com", iphoneStock);
+  EmailObserverClass observer2("pqr@gmail.com", &iphoneStock);
   obj = &observer2;
   iphoneStock.add(obj);
   
-  MobileObserverClass observer3("9539382892", iphoneStock);
+  MobileObserverClass observer3("9539382892", &iphoneStock);
   obj = &observer3;
   iphoneStock.add(obj);
   
