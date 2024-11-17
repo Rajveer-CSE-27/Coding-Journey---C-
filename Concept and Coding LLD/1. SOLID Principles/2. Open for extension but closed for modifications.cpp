@@ -91,9 +91,6 @@ int main() {
 Hence let hum saveInvoice wali class ko abstract bana dete hai using virtual function.
 Jisse usko extend kar karke hum new classes bana paaye and main cheez ya dusre childrens ko modify naa kare
 
-virtual define karke hum sirf declare karenge ki child classes ko ye function implement karna hoga.
-Function ka definition hum child class ke andar karenge.
-Here we created SaveToDatabase and SaveToFile class
 
 **/
 
@@ -155,7 +152,7 @@ public:
   // but iske requirements ke according iske child classes me hoga
   
   // note :: virtual void save (Invoice i) override {}
-  // agar ye karte to jitne bhi child hote usme sirf 1 parameter : Invoice i hi daalna padta, jo humne SaveToFile ke save me extra parameter daalein hai vo nhi kar paatein
+  // agar ye karte to jitne bhi child hote usme agar hum save define karte hai to sirf 1 parameter : Invoice i hi daalna padta, jo humne SaveToFile ke save me extra parameter daalein hai vo nhi kar paatein
   
 
 };
