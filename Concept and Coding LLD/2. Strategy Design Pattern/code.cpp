@@ -11,73 +11,73 @@ Strategy design pattern :
 
 // Problem Scenario
 
-// class Vehicle {
+class Vehicle {
   
-// public:
+public:
   
-//   void drive() {
+  void drive() {
     
-//     cout << "Vehicle is driving normally.\n";
-//   }
+    cout << "Vehicle is driving normally.\n";
+  }
   
-// };
+};
 
-// class SportVehicle : public Vehicle {
+class SportVehicle : public Vehicle {
 
-// public:
+public:
   
-//   void drive() {
+  void drive() {
     
-//     cout << "Vehicle is driving fast.\n"; // code1 in notes
-//   }
-// };
+    cout << "Vehicle is driving fast.\n"; // code1 in notes
+  }
+};
 
-// class HeavyVehicle : public Vehicle {
+class HeavyVehicle : public Vehicle {
 
-// public:
+public:
   
-//   void drive() {
+  void drive() {
     
-//     cout << "Vehicle is driving slow.\n";// code 2 in notes
-//   }
-// };
+    cout << "Vehicle is driving slow.\n";// code 2 in notes
+  }
+};
 
-// class OffRoadVehicle : public Vehicle {
+class OffRoadVehicle : public Vehicle {
 
-// public:
+public:
   
-//   void drive() {
+  void drive() {
     
-//     cout << "Vehicle is driving fast.\n";//code 1 in notes
-//   }
-// };
+    cout << "Vehicle is driving fast.\n";//code 1 in notes
+  }
+};
 
-// class PassengerVehicle : public Vehicle {
+class PassengerVehicle : public Vehicle {
 
-// public:
+public:
   
-//   // this implements drive() as in Vehicle class
-// };
+  // this implements drive() as in Vehicle class
+};
 
 
-// // here We have written code1  multiple times and need to avoid it.
+// here We have written code1  multiple times and need to avoid it.
 
 
-// int main() {
+int main() {
   
-//   SportVehicle s;
-//   HeavyVehicle h;
-//   OffRoadVehicle o;
-//   PassengerVehicle p;
+  SportVehicle s;
+  HeavyVehicle h;
+  OffRoadVehicle o;
+  PassengerVehicle p;
   
-//   s.drive();
-//   h.drive();
-//   o.drive();
-//   p.drive();
+  s.drive();
+  h.drive();
+  o.drive();
+  p.drive();
 
-//   return 0;
+  return 0;
   
-// }
+}
 
 
 // Using Strategy Design Pattern
